@@ -213,6 +213,15 @@ rvWeaponRocketLauncher::OnLaunchProjectile
 void rvWeaponRocketLauncher::OnLaunchProjectile ( idProjectile* proj ) {
 	rvWeapon::OnLaunchProjectile(proj);
 
+	idMat3 axis = owner->viewAxis;
+
+	idVec3 pos = proj->GetPhysics()->GetOrigin();
+
+	pos += axis[1] * 30.0f;
+	pos += axis[0] * 10.0f;
+
+	proj->GetPhysics()->SetOrigin(pos);
+
 	// Double check that its actually a guided projectile
 	if ( !proj || !proj->IsType ( idGuidedProjectile::GetClassType() ) ) {
 		return;
