@@ -7,16 +7,32 @@
       "RelativeMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|solutionrelative:game\\weapon\\WeaponRocketLauncher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\weapon\\WeaponMachinegun.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|solutionrelative:game\\weapon\\WeaponMachinegun.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\weapon\\WeaponGrenadeLauncher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|solutionrelative:game\\weapon\\WeaponGrenadeLauncher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|C:\\USERS\\JAKE\\GIT\\SCHOOL\\GAME-MOD-Q4-JAKE\\RENDERER\\RENDERWORLD.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|solutionrelative:RENDERER\\RENDERWORLD.H||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\weapon\\WeaponBlaster.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|solutionrelative:game\\weapon\\WeaponBlaster.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\weapon\\WeaponHyperblaster.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|solutionrelative:game\\weapon\\WeaponHyperblaster.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\Projectile.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|solutionrelative:game\\Projectile.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\Projectile.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|solutionrelative:game\\Projectile.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\weapon\\WeaponBlaster.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{49BEC5C6-B964-417A-851E-808886B57430}|game.vcxproj|solutionrelative:game\\weapon\\WeaponBlaster.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,8 +42,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WeaponMachinegun.cpp",
+              "DocumentMoniker": "C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\weapon\\WeaponMachinegun.cpp",
+              "RelativeDocumentMoniker": "game\\weapon\\WeaponMachinegun.cpp",
+              "ToolTip": "C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\weapon\\WeaponMachinegun.cpp",
+              "RelativeToolTip": "game\\weapon\\WeaponMachinegun.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-19T00:49:41.032Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -36,7 +65,7 @@
               "RelativeDocumentMoniker": "game\\weapon\\WeaponRocketLauncher.cpp",
               "ToolTip": "C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\weapon\\WeaponRocketLauncher.cpp",
               "RelativeToolTip": "game\\weapon\\WeaponRocketLauncher.cpp",
-              "ViewState": "AgIAAM4AAAAAAAAAAAAcwOUAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAANEBAAAAAAAAAAAAAN8BAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-09-16T01:36:38.432Z",
               "EditorCaption": ""
@@ -44,38 +73,80 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "WeaponGrenadeLauncher.cpp",
+              "DocumentMoniker": "C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\weapon\\WeaponGrenadeLauncher.cpp",
+              "RelativeDocumentMoniker": "game\\weapon\\WeaponGrenadeLauncher.cpp",
+              "ToolTip": "C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\weapon\\WeaponGrenadeLauncher.cpp",
+              "RelativeToolTip": "game\\weapon\\WeaponGrenadeLauncher.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-19T00:49:39.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RenderWorld.h",
+              "DocumentMoniker": "C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\renderer\\RenderWorld.h",
+              "RelativeDocumentMoniker": "renderer\\RenderWorld.h",
+              "ToolTip": "C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\renderer\\RenderWorld.h",
+              "RelativeToolTip": "renderer\\RenderWorld.h",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAvwGUAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-09-19T00:49:16.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "WeaponHyperblaster.cpp",
+              "DocumentMoniker": "C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\weapon\\WeaponHyperblaster.cpp",
+              "RelativeDocumentMoniker": "game\\weapon\\WeaponHyperblaster.cpp",
+              "ToolTip": "C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\weapon\\WeaponHyperblaster.cpp",
+              "RelativeToolTip": "game\\weapon\\WeaponHyperblaster.cpp",
+              "ViewState": "AgIAANgAAAAAAAAAAAAAAOcAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-09-18T21:47:38.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Projectile.cpp",
               "DocumentMoniker": "C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\Projectile.cpp",
               "RelativeDocumentMoniker": "game\\Projectile.cpp",
               "ToolTip": "C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\Projectile.cpp",
               "RelativeToolTip": "game\\Projectile.cpp",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAIwEwAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAADgAAAAAAAAAAAAIwEwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-16T16:56:29.862Z"
+              "WhenOpened": "2025-09-16T16:56:29.862Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Projectile.h",
               "DocumentMoniker": "C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\Projectile.h",
               "RelativeDocumentMoniker": "game\\Projectile.h",
               "ToolTip": "C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\Projectile.h",
               "RelativeToolTip": "game\\Projectile.h",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAEwJEAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAcwJIAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-09-17T02:41:13.36Z"
+              "WhenOpened": "2025-09-17T02:41:13.36Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "WeaponBlaster.cpp",
               "DocumentMoniker": "C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\weapon\\WeaponBlaster.cpp",
               "RelativeDocumentMoniker": "game\\weapon\\WeaponBlaster.cpp",
               "ToolTip": "C:\\Users\\Jake\\git\\School\\Game-Mod-Q4-Jake\\game\\weapon\\WeaponBlaster.cpp",
               "RelativeToolTip": "game\\weapon\\WeaponBlaster.cpp",
-              "ViewState": "AgIAAJ0BAAAAAAAAAAAcwK4BAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAKMBAAAAAAAAAAAvwLEBAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-09T00:11:34.916Z"
+              "WhenOpened": "2025-09-09T00:11:34.916Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",

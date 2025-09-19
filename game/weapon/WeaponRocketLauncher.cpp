@@ -47,6 +47,8 @@ protected:
 
 	float								reloadRate;
 
+	int									numProjectiles;
+
 	bool								idleEmpty;
 
 private:
@@ -93,6 +95,8 @@ rvWeaponRocketLauncher::Spawn
 */
 void rvWeaponRocketLauncher::Spawn ( void ) {
 	float f;
+
+	numProjectiles = 1;
 
 	idleEmpty = false;
 	
@@ -217,10 +221,25 @@ void rvWeaponRocketLauncher::OnLaunchProjectile ( idProjectile* proj ) {
 
 	idVec3 pos = proj->GetPhysics()->GetOrigin();
 
-	pos += axis[1] * 30.0f;
-	pos += axis[0] * 10.0f;
+	pos += axis[1] * 100.0f; // right 
+	pos += axis[0] * 200.0f; // forward
+
+	/*idVec3 forward = axis[0];
+	forward.z = 0;
+	forward.Normalize();
+
+	idVec3 perp(-forward.y, forward.x, 0);
+
+	pos += perp * 30.0f;
+	pos += forward * 10.0f;
+	pos += axis[2] * 10.0f;*/
+
 
 	proj->GetPhysics()->SetOrigin(pos);
+
+	float speed = proj->GetPhysics()->GetLinearVelocity().Length();
+	idVec3 vel = -axis[1] * speed;
+	proj->GetPhysics()->SetLinearVelocity(vel);
 
 	// Double check that its actually a guided projectile
 	if ( !proj || !proj->IsType ( idGuidedProjectile::GetClassType() ) ) {
@@ -454,8 +473,20 @@ stateResult_t rvWeaponRocketLauncher::State_Fire ( const stateParms_t& parms ) {
 	};	
 	switch ( parms.stage ) {
 		case STAGE_INIT:
-			nextAttackTime = gameLocal.time + (fireRate * owner->PowerUpModifier ( PMOD_FIRERATE ));		
-			Attack ( false, 1, spread, 0, 1.0f );
+			nextAttackTime = gameLocal.time + (fireRate * owner->PowerUpModifier ( PMOD_FIRERATE ));
+
+			for (int i = 0; i < numProjectiles; i++)
+			{
+				float angleOffset = (i - (numProjectiles - 1) / 2.0f) * 5.0f;
+				Attack(false, 1, angleOffset, 0, 1.0f);
+			}
+			numProjectiles++;
+
+			if (numProjectiles > 6)
+			{
+				numProjectiles = 6;
+			}
+
 			PlayAnim ( ANIMCHANNEL_LEGS, "fire", parms.blendFrames );	
 			return SRESULT_STAGE ( STAGE_WAIT );
 	
