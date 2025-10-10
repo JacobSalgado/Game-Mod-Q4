@@ -17,6 +17,7 @@ AI.cpp
 #include "../Projectile.h"
 #include "../spawner.h"
 #include "AI_Tactical.h"
+#include "../Player.h" // persona addition
 
 const char* aiTalkMessageString [ ] = {
 	"None",
@@ -1663,6 +1664,16 @@ void idAI::Killed( idEntity *inflictor, idEntity *attacker, int damage, const id
 
 		aiManager.AnnounceKill ( this, attacker, inflictor );
 		aiManager.AnnounceDeath ( this, attacker );
+
+		// persona additions
+		idPlayer* player = dynamic_cast<idPlayer*>(attacker);
+		if (player /*&& player->inventory*/ )
+		{
+			//player->inventory->playerExp += 10;
+			//player->inventory->personaExp += 10;
+			//player->inventory
+		}
+
    	}
 
 	if ( attacker && attacker->IsType( idActor::GetClassType() ) ) {
