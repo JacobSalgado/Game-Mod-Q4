@@ -207,6 +207,11 @@ void idInventory::Clear( void ) {
 	maxarmor			= 0;
 	secretAreasDiscovered = 0;
 
+	// persona additions
+	personaExp = 0;
+	playerExp = 0;
+	playerLevel = 0;
+
 	memset( ammo, 0, sizeof( ammo ) );
 
 	ClearPowerUps();
@@ -364,6 +369,11 @@ void idInventory::RestoreInventory( idPlayer *owner, const idDict &dict ) {
 		}
 	}
 
+	// persona experience points
+	personaExp = dict.GetInt( "maxPersonaEXP", "1000");
+	playerLevel = dict.GetInt( "maxPlayerLEVEL", "50");
+	playerExp = dict.GetInt( "maxPlayerEXP", "1000");
+
 	// weapons are stored as a number for persistant data, but as strings in the entityDef
 	weapons	= dict.GetInt( "weapon_bits", "0" );
 
@@ -404,6 +414,10 @@ void idInventory::Save( idSaveGame *savefile ) const {
 	savefile->WriteInt( powerups );
 	savefile->WriteInt( armor );
 	savefile->WriteInt( maxarmor );
+
+	savefile->WriteInt(personaExp);
+	savefile->WriteInt(playerLevel);
+	savefile->WriteInt(playerExp);
 
 	for( i = 0; i < MAX_AMMO; i++ ) {
 		savefile->WriteInt( ammo[ i ] );

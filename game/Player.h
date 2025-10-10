@@ -208,6 +208,12 @@ public:
 	int						powerupEndTime[ POWERUP_MAX ];
 	int						weaponMods[ MAX_WEAPONS ];
 
+	// persona additions
+	int						personaExp;
+	int						playerExp;
+	int						playerLevel;
+
+
  	// multiplayer
  	int						ammoPredictTime;
 	int						ammoRegenStep[ MAX_WEAPONS ];
