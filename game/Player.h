@@ -211,6 +211,7 @@ public:
 	// persona additions
 	int						personaExp;
 	int						playerExp;
+	int						maxPlayerExp;
 	int						playerLevel;
 
 

@@ -210,6 +210,7 @@ void idInventory::Clear( void ) {
 	// persona additions
 	personaExp = 0;
 	playerExp = 0;
+	maxPlayerExp = 0;
 	playerLevel = 0;
 
 	memset( ammo, 0, sizeof( ammo ) );
@@ -370,9 +371,11 @@ void idInventory::RestoreInventory( idPlayer *owner, const idDict &dict ) {
 	}
 
 	// persona experience points
-	personaExp = dict.GetInt( "maxPersonaEXP", "1000");
-	playerLevel = dict.GetInt( "maxPlayerLEVEL", "50");
-	playerExp = dict.GetInt( "maxPlayerEXP", "1000");
+	personaExp = dict.GetInt( "personaEXP", "500");
+	playerLevel = dict.GetInt( "playerLEVEL", "50");
+	playerExp = dict.GetInt( "playerEXP", "500");
+	maxPlayerExp = dict.GetInt("maxPlayerEXP", "1000");
+
 
 	// weapons are stored as a number for persistant data, but as strings in the entityDef
 	weapons	= dict.GetInt( "weapon_bits", "0" );
@@ -415,9 +418,11 @@ void idInventory::Save( idSaveGame *savefile ) const {
 	savefile->WriteInt( armor );
 	savefile->WriteInt( maxarmor );
 
+	// persona additions
 	savefile->WriteInt(personaExp);
 	savefile->WriteInt(playerLevel);
 	savefile->WriteInt(playerExp);
+	savefile->WriteInt(maxPlayerExp);
 
 	for( i = 0; i < MAX_AMMO; i++ ) {
 		savefile->WriteInt( ammo[ i ] );
@@ -498,6 +503,12 @@ void idInventory::Restore( idRestoreGame *savefile ) {
 	savefile->ReadInt( powerups );
 	savefile->ReadInt( armor );
 	savefile->ReadInt( maxarmor );
+
+	// persona additions
+	savefile->ReadInt(personaExp);
+	savefile->ReadInt(playerExp);
+	savefile->ReadInt(maxPlayerExp);
+	savefile->ReadInt(playerLevel);
 
 	for( i = 0; i < MAX_AMMO; i++ ) {
 		savefile->ReadInt( ammo[ i ] );
@@ -3420,6 +3431,15 @@ void idPlayer::UpdateHudStats( idUserInterface *_hud ) {
 		_hud->SetStateInt ( "player_armor", inventory.armor );
 		_hud->SetStateFloat	( "player_armorpct", idMath::ClampFloat ( 0.0f, 1.0f, (float)inventory.armor / (float)inventory.maxarmor ) );
 		_hud->HandleNamedEvent ( "updateArmor" );
+	}
+
+	// persona additions
+	temp = _hud->State().GetInt("player_exp", "-1");
+	if (temp != inventory.playerExp)
+	{
+		_hud->SetStateInt( "player_expDelta", temp == -1 ? 0 : (temp - inventory.playerExp));
+		_hud->SetStateInt("player_exp", inventory.playerExp);
+		_hud->SetStateInt("player_exppct", idMath::ClampInt(0, 1, (int)inventory.playerExp / (int)inventory.maxPlayerExp));
 	}
 	
 	// Boss bar
