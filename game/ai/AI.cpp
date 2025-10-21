@@ -1669,9 +1669,11 @@ void idAI::Killed( idEntity *inflictor, idEntity *attacker, int damage, const id
 		idPlayer* player = dynamic_cast<idPlayer*>(attacker);
 		if (player /*&& player->inventory*/ )
 		{
-			//player->inventory->playerExp += 10;
-			//player->inventory->personaExp += 10;
-			//player->inventory
+			gameLocal.Printf("Before: playerExp=%d\n", player->inventory.playerExp, player->inventory.personaExp);
+			player->inventory.playerExp += 100;
+			player->inventory.personaExp += 110;
+			gameLocal.Printf("Before: playerExp=%d\n", player->inventory.playerExp, player->inventory.personaExp);
+			gameLocal.Printf("%s killed by player!\n", GetName());
 		}
 
    	}
