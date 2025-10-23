@@ -295,6 +295,8 @@ bool idAI::CheckAction_RangedAttack ( rvAIAction* action, int animNum ) {
 idAI::CheckAction_MeleeAttack
 ================
 */
+
+// look into this function - persona
 bool idAI::CheckAction_MeleeAttack ( rvAIAction* action, int animNum ) {
 	if ( !enemy.ent || !enemy.fl.inFov ) {
 		return false;

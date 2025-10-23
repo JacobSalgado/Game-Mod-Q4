@@ -31,6 +31,7 @@ private:
 
 	int					standingMeleeNoAttackTime;
 	int					rageThreshold;
+	int					actionWait; // persona addition
 
 	void				RageStart			( void );
 	void				RageStop			( void );
@@ -62,6 +63,10 @@ rvMonsterGrunt::Spawn
 */
 void rvMonsterGrunt::Spawn ( void ) {
 	rageThreshold = spawnArgs.GetInt ( "health_rageThreshold" );
+
+	actionWait = gameLocal.GetTime();
+
+	//enemyCanAttack = false; // 
 
 	// Custom actions
 	actionMeleeMoveAttack.Init	( spawnArgs, "action_meleeMoveAttack",	NULL,				AIACTIONF_ATTACK );
@@ -140,6 +145,12 @@ rvMonsterGrunt::CheckActions
 ================
 */
 bool rvMonsterGrunt::CheckActions ( void ) {
+	// wait for pause
+	/*if (!enemyCanAttack)
+	{
+		return false;
+	}*/
+	
 	// If our health is below the rage threshold then enrage
 	if ( health < rageThreshold ) { 
 		PerformAction ( "Torso_Enrage", 4, true );
@@ -148,6 +159,9 @@ bool rvMonsterGrunt::CheckActions ( void ) {
 
 	// Moving melee attack?
 	if ( PerformAction ( &actionMeleeMoveAttack, (checkAction_t)&idAI::CheckAction_MeleeAttack, NULL ) ) {
+		//standingMeleeNoAttackTime = 0;
+		//enemyCanAttack = false;
+		//actionWait = gameLocal.GetTime() + 10000; // 10000 is 10 seconds before next movement
 		return true;
 	}
 	

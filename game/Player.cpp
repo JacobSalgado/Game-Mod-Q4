@@ -3434,13 +3434,14 @@ void idPlayer::UpdateHudStats( idUserInterface *_hud ) {
 	}
 
 	// persona additions
-	temp = _hud->State().GetInt("player_exp", "-1");
+	/*temp = _hud->State().GetInt("player_exp", "-1");
 	if (temp != inventory.playerExp)
 	{
 		_hud->SetStateInt( "player_expDelta", temp == -1 ? 0 : (temp - inventory.playerExp));
-		_hud->SetStateInt("player_exp", inventory.playerExp);
+		//_hud->SetStateInt("player_exp", inventory.playerExp);
 		_hud->SetStateInt("player_exppct", idMath::ClampInt(0, 1, (int)inventory.playerExp / (int)inventory.maxPlayerExp));
-	}
+		//_hud->HandleNamedEvent("updatePlayerExp");
+	}*/
 	
 	// Boss bar
 	if ( _hud->State().GetInt ( "boss_health", "-1" ) != (bossEnemy ? bossEnemy->health : -1) ) {
@@ -3471,6 +3472,25 @@ void idPlayer::UpdateHudStats( idUserInterface *_hud ) {
 	}
 	
 	_hud->StateChanged( gameLocal.time );
+}
+
+/*
+===============
+PERSONA ADDITION -
+
+idPlayer: UpdateHudExperiencePoints
+===============
+*/
+void idPlayer::UpdateHudExperiencePoints(idUserInterface* _hud)
+{
+	int playerExp;
+
+	assert(_hud);
+
+	//playerExp = (int)inventory.playerExp;
+
+	//_hud->SetStateInt("player_exp", playerExp);
+
 }
 
 /*
@@ -4038,6 +4058,27 @@ void idPlayer::FireWeapon( void ) {
 	else if ( weapon->IsReloading() ) {
 		weapon->CancelReload();
 	}
+
+	// persona additions
+
+
+	// ignore below
+	/*for (idEntity* ent = gameLocal.spawnedEntities.Next(); ent != NULL; ent = ent->spawnNode.Next())
+	{
+		if (ent->IsType(idAI::GetClassType()))
+		{
+			idAI* ai = static_cast<idAI*>(ent);
+
+			// grunt call
+			if (ai->IsType( rvMonsterGrunt::GetClassType() ))
+			{
+				rvMonsterGrunt* grunt = static_cast<rvMonsterGrunt*>(ai);
+				grunt->enemyCanAttack = true; // grunt's turn to attack
+			}
+		}
+	}*/
+
+
 /* twhitaker: removed this at the request of Matt Vainio.
 	if ( !gameLocal.isMultiplayer ) {
 		if ( hud && tipUp ) {
@@ -7244,6 +7285,8 @@ void idPlayer::UpdateFocus( void ) {
 
 				ui->SetStateString( "player_health", va("%i", health ) );
 				ui->SetStateString( "player_armor", va( "%i%%", inventory.armor ) );
+				ui->SetStateString( "player_exp", va("EXP: %i", inventory.playerExp)); // persona
+				// include player level after testing - persona
 
 				kv = ent->spawnArgs.MatchPrefix( "gui_", NULL );
 				while ( kv ) {

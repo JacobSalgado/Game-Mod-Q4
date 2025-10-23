@@ -181,7 +181,7 @@ typedef struct rvAIEnemy_s {
 	struct flags_s {
 		bool		lockOrigin		:1;					// Stop tracking enemy origin until state changes
 		bool		dead			:1;					// Enemy is dead
-		bool		inFov			:1;					// Enemy is currently in fov
+		bool		inFov			:1;					// Enemy is currently in fov // valuable for turn based combat - persona addition
 		bool		sighted			:1;					// Enemy was sighted at least once
 		bool		visible			:1;					// Enemy is visible?
 	} fl;

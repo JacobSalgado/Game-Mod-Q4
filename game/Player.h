@@ -299,6 +299,8 @@ public:
 	int						godmodeDamage;
 	bool					undying;
 
+	bool					enemyCanAttack;		// persona addition
+
 	bool					spawnAnglesSet;		// on first usercmd, we must set deltaAngles
 	idAngles				spawnAngles;
 	idAngles				viewAngles;			// player view angles
@@ -647,6 +649,7 @@ public:
 	void					ResetHUDWeaponSwitch( void );
 #endif
 	void					UpdateHudStats( idUserInterface *hud );
+	void					UpdateHudExperiencePoints(idUserInterface* hud); // persona 
  	void					UpdateHudAmmo( idUserInterface *hud );
  	void					ShowTip( const char *title, const char *tip, bool autoHide );
  	void					HideTip( void );
