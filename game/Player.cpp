@@ -372,7 +372,7 @@ void idInventory::RestoreInventory( idPlayer *owner, const idDict &dict ) {
 
 	// persona experience points
 	personaExp = dict.GetInt( "personaEXP", "500");
-	playerLevel = dict.GetInt( "playerLEVEL", "50");
+	playerLevel = dict.GetInt( "playerLEVEL", "50"); // starting at level 1
 	playerExp = dict.GetInt( "playerEXP", "500");
 	maxPlayerExp = dict.GetInt("maxPlayerEXP", "1000");
 
@@ -3433,15 +3433,15 @@ void idPlayer::UpdateHudStats( idUserInterface *_hud ) {
 		_hud->HandleNamedEvent ( "updateArmor" );
 	}
 
-	// persona additions
-	temp = _hud->State().GetInt("player_exp", "-1");
+	// persona additions - playerexp
+	/*temp = _hud->State().GetInt("player_exp", "-1");
 	if (temp != inventory.playerExp)
 	{
 		_hud->SetStateInt( "player_expDelta", temp == -1 ? 0 : (temp - inventory.playerExp));
 		//_hud->SetStateInt("player_exp", inventory.playerExp);
 		_hud->SetStateInt("player_exppct", idMath::ClampInt(0, 1, (int)inventory.playerExp / (int)inventory.maxPlayerExp));
 		//_hud->HandleNamedEvent("updatePlayerExp");
-	}
+	}*/
 	
 	// Boss bar
 	if ( _hud->State().GetInt ( "boss_health", "-1" ) != (bossEnemy ? bossEnemy->health : -1) ) {
@@ -3492,6 +3492,44 @@ void idPlayer::UpdateHudExperiencePoints(idUserInterface* _hud)
 	_hud->SetStateInt("player_exp", playerExp);
 
 }
+
+/*
+===============
+PERSONA ADDITION -
+
+idPlayer: UpdateHudPlayerLevel
+===============
+*/
+void idPlayer::UpdateHudPlayerLevel(idUserInterface* _hud)
+{
+	int playerLevel;
+
+	assert(_hud);
+
+	playerLevel = inventory.playerLevel;
+	_hud->SetStateInt("player_level", playerLevel);
+}
+
+
+/*
+===============
+PERSONA ADDITION -
+
+idPlayer: UpdatePlayerLevel
+===============
+*/
+void idPlayer::UpdatePlayerLevel()
+{
+	int increment = 100;
+
+	if (inventory.playerExp > increment)
+	{
+		increment += 100;
+		inventory.playerLevel++;
+		UpdateHudPlayerLevel(hud);
+	}
+}
+
 
 /*
 ===============
@@ -3790,6 +3828,8 @@ void idPlayer::DrawHUD( idUserInterface *_hud ) {
 		}	
 
 		UpdateHudStats( _hud );
+		UpdateHudExperiencePoints(_hud); // PERSONA ADDITION
+		UpdateHudPlayerLevel(_hud); // PERSONA ADDITION
 
 		if ( focusBrackets ) {
 			// If 2d_calc is still true then the gui didnt render so we can abandon it
@@ -7285,7 +7325,7 @@ void idPlayer::UpdateFocus( void ) {
 
 				ui->SetStateString( "player_health", va("%i", health ) );
 				ui->SetStateString( "player_armor", va( "%i%%", inventory.armor ) );
-				ui->SetStateString( "player_exp", va("EXP: %i", inventory.playerExp)); // persona
+				//ui->SetStateString( "player_exp", va("EXP: %i", inventory.playerExp)); // persona
 				// include player level after testing - persona
 
 				kv = ent->spawnArgs.MatchPrefix( "gui_", NULL );

@@ -650,6 +650,8 @@ public:
 #endif
 	void					UpdateHudStats( idUserInterface *hud );
 	void					UpdateHudExperiencePoints(idUserInterface* hud); // persona 
+	void					UpdateHudPlayerLevel(idUserInterface* hud); // persona
+	void					UpdatePlayerLevel(); // persona
  	void					UpdateHudAmmo( idUserInterface *hud );
  	void					ShowTip( const char *title, const char *tip, bool autoHide );
  	void					HideTip( void );

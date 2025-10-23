@@ -1672,7 +1672,7 @@ void idAI::Killed( idEntity *inflictor, idEntity *attacker, int damage, const id
 			gameLocal.Printf("Before: playerExp=%d\n", player->inventory.playerExp, player->inventory.personaExp);
 			player->inventory.playerExp += 100;
 			player->inventory.personaExp += 110;
-			gameLocal.Printf("Before: playerExp=%d\n", player->inventory.playerExp, player->inventory.personaExp);
+			gameLocal.Printf("After: playerExp=%d\n", player->inventory.playerExp, player->inventory.personaExp);
 			gameLocal.Printf("%s killed by player!\n", GetName());
 		}
 
