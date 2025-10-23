@@ -3434,14 +3434,14 @@ void idPlayer::UpdateHudStats( idUserInterface *_hud ) {
 	}
 
 	// persona additions
-	/*temp = _hud->State().GetInt("player_exp", "-1");
+	temp = _hud->State().GetInt("player_exp", "-1");
 	if (temp != inventory.playerExp)
 	{
 		_hud->SetStateInt( "player_expDelta", temp == -1 ? 0 : (temp - inventory.playerExp));
 		//_hud->SetStateInt("player_exp", inventory.playerExp);
 		_hud->SetStateInt("player_exppct", idMath::ClampInt(0, 1, (int)inventory.playerExp / (int)inventory.maxPlayerExp));
 		//_hud->HandleNamedEvent("updatePlayerExp");
-	}*/
+	}
 	
 	// Boss bar
 	if ( _hud->State().GetInt ( "boss_health", "-1" ) != (bossEnemy ? bossEnemy->health : -1) ) {
@@ -3487,9 +3487,9 @@ void idPlayer::UpdateHudExperiencePoints(idUserInterface* _hud)
 
 	assert(_hud);
 
-	//playerExp = (int)inventory.playerExp;
+	playerExp = (int)inventory.playerExp;
 
-	//_hud->SetStateInt("player_exp", playerExp);
+	_hud->SetStateInt("player_exp", playerExp);
 
 }
 
