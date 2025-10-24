@@ -372,8 +372,8 @@ void idInventory::RestoreInventory( idPlayer *owner, const idDict &dict ) {
 
 	// persona experience points
 	personaExp = dict.GetInt( "personaEXP", "500");
-	playerLevel = dict.GetInt( "playerLEVEL", "50"); // starting at level 1
-	playerExp = dict.GetInt( "playerEXP", "500");
+	playerLevel = dict.GetInt( "playerLEVEL", "1"); // starting at level 1
+	playerExp = dict.GetInt( "playerEXP", "100");
 	maxPlayerExp = dict.GetInt("maxPlayerEXP", "1000");
 
 
@@ -3506,6 +3506,7 @@ void idPlayer::UpdateHudPlayerLevel(idUserInterface* _hud)
 
 	assert(_hud);
 
+	UpdatePlayerLevel();
 	playerLevel = inventory.playerLevel;
 	_hud->SetStateInt("player_level", playerLevel);
 }
@@ -3518,15 +3519,36 @@ PERSONA ADDITION -
 idPlayer: UpdatePlayerLevel
 ===============
 */
+int increment = 101;
 void idPlayer::UpdatePlayerLevel()
 {
-	int increment = 100;
-
-	if (inventory.playerExp > increment)
+	if (inventory.playerExp >= increment)
 	{
-		increment += 100;
+		increment += 200;
 		inventory.playerLevel++;
-		UpdateHudPlayerLevel(hud);
+		//UpdateHudPlayerLevel(hud);
+	}
+
+	// skills received when player levels up
+	if (inventory.playerLevel >= 2)
+	{
+		inventory.armor++; // constantly increase armor by 1
+	}
+	if (inventory.playerLevel >= 4)
+	{
+		health++; // constantly increase health by 1
+	}
+	if (inventory.playerLevel == 6)
+	{
+		inventory.GivePowerUp(gameLocal.GetLocalPlayer(), POWERUP_INVISIBILITY, 60000); // invisibility for 60 seconds
+	}
+	if (inventory.playerLevel == 8)
+	{
+		inventory.GivePowerUp(gameLocal.GetLocalPlayer(), POWERUP_QUADDAMAGE, 40000); // quad damage for 40 seconds
+	}
+	if (inventory.playerLevel == 10)
+	{
+		inventory.GivePowerUp(gameLocal.GetLocalPlayer(), POWERUP_HASTE, 60000); // haste for 60 seconds
 	}
 }
 
