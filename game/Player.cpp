@@ -1906,7 +1906,7 @@ void idPlayer::Spawn( void ) {
 		}
 
 		if ( !gameLocal.isMultiplayer ) {
-			objectiveSystem = uiManager->FindGui( spawnArgs.GetString( "wristcomm", "guis/wristcomm.gui" ), true, false, true );
+			objectiveSystem = uiManager->FindGui( spawnArgs.GetString( "wristcomm", "guis/wristcomm.gui" ), true, false, true ); // look for wristcomm.gui to update for persona 
 			objectiveSystemOpen = false;
 #ifdef _XENON
 			g_ObjectiveSystemOpen = objectiveSystemOpen;
@@ -5312,6 +5312,10 @@ void idPlayer::UpdateObjectiveInfo( void ) {
 	objectiveSystem->SetStateString( "objective1", "" );
 	objectiveSystem->SetStateString( "objective2", "" );
 	objectiveSystem->SetStateString( "objective3", "" );
+
+	// persona addition
+	objectiveSystem->SetStateString( "helpText", common->GetLocalizedString("#str_223010"));
+	objectiveSystem->SetStateBool( "showHelp", true);
 
 // RAVEN BEGIN
 // mekberg: swap objective positions to allow for stack-like appearance.
