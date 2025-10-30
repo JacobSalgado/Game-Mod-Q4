@@ -99,6 +99,12 @@ struct idLevelTriggerInfo {
 	idStr levelName;
 	idStr triggerName;
 };
+
+// PERSONA ADDITION
+struct playerEquipment {
+	 
+};
+
 /*
 struct rvDatabaseEntry {
 	idStr title;
@@ -652,6 +658,7 @@ public:
 	void					UpdateHudExperiencePoints(idUserInterface* hud); // persona 
 	void					UpdateHudPlayerLevel(idUserInterface* hud); // persona
 	void					UpdatePlayerLevel(); // persona
+	void					GivePlayerExp(); // persona
  	void					UpdateHudAmmo( idUserInterface *hud );
  	void					ShowTip( const char *title, const char *tip, bool autoHide );
  	void					HideTip( void );
@@ -1068,6 +1075,7 @@ private:
 	void					UpdateObjectiveInfo			( void );
 //	void					UpdateDatabaseInfo			( void );
 	void					UpdateIntentDir				( void );	
+	void					SummonPartyMember(const char* classname); // PERSONA
 
 	void					LoadDeferredModel			( void );
 

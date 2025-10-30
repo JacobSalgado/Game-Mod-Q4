@@ -1169,6 +1169,27 @@ public:
 
 //============================================================================
 
+// =======================  PERSONA ADDITION  ================================
+class idCombatManager {
+public:
+	bool inCombat;
+	idPlayer* player;
+	idAI* enemy;
+	int combatTurn; // 0 = playe's turn, 1 = enemy's turn
+
+	void StartCombat(idPlayer* p, idAI* e);
+	void EndCombat();
+	void NextTurn();
+	
+	void PlayerAttack();
+	void EnemyAttack();
+};
+
+extern idCombatManager* combatManager;
+// =======================  END PERSONA ADDITION  ============================
+
+
+
 
 // content masks
 #define	MASK_ALL					(-1)

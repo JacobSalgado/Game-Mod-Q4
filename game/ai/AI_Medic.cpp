@@ -337,7 +337,7 @@ void rvAIMedic::DropPatient( void )
 	if ( healDebounceInterval ) {
 		healDebounceTime = gameLocal.GetTime() + healDebounceInterval;
 	}
-
+	
 	ForceTacticalUpdate();
 	if ( !aifl.scripted ) {
 		UpdateTactical ( 0 );

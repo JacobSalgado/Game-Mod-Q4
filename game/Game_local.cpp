@@ -31,6 +31,9 @@ idDeclManager *				declManager = NULL;
 idAASFileManager *			AASFileManager = NULL;
 idCollisionModelManager *	collisionModelManager = NULL;
 
+// persona addition
+idCombatManager* combatManager = nullptr;
+
 // RAVEN BEGIN
 // jscott: game interface to the fx system
 rvBSEManager *				bse = NULL;
@@ -1961,6 +1964,9 @@ void idGameLocal::InitFromNewMap( const char *mapName, idRenderWorld *renderWorl
 	mpGame.Reset();
 
 	mpGame.Precache();
+
+	// persona addition - combat manager
+	combatManager = new idCombatManager();
 
 // RAVEN BEGIN
 // mwhitlock: Dynamic memory consolidation
@@ -4096,6 +4102,13 @@ void idGameLocal::HandleMainMenuCommands( const char *menuCommand, idUserInterfa
 	} else if ( !idStr::Icmp( menuCommand, "server_clearSort" ) ) {
 		filterMod = -1;
 		gui->SetStateString( "filterMod", common->GetLocalizedString( "#str_123008" ) );
+	}
+	// PERSONA ADDITION - menu command to increase player exp/level
+	else if ( !idStr::Icmp( menuCommand, "increase_player_level" ) ) {
+		idPlayer* player = GetLocalPlayer();
+		if ( player ) {
+			player->GivePlayerExp();
+		}
 	}
 
 	return;
@@ -6475,6 +6488,13 @@ void idGameLocal::SetPlayerInfo( idVec3 &origin, idMat3 &axis, int PlayerNum ) {
 
 	return;
 };
+
+/*
+======================
+PERSONA ADDITION
+======================
+*/
+//bool idGameLocal::
 
 bool idGameLocal::PlayerChatDisabled( int clientNum ) {
 	if( clientNum < 0 || clientNum >= MAX_CLIENTS || !entities[ clientNum ] ) {

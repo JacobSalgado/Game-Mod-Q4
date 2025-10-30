@@ -3552,6 +3552,19 @@ void idPlayer::UpdatePlayerLevel()
 	}
 }
 
+/*
+===============
+PERSONA ADDITION -
+
+idPlayer: GivePlayerExp
+===============
+*/
+void idPlayer::GivePlayerExp()
+{
+	inventory.playerExp += 200;
+
+	gameLocal.Printf("Player Exp increased to %d\n", inventory.playerExp);
+}
 
 /*
 ===============
@@ -5329,7 +5342,7 @@ void idPlayer::UpdateObjectiveInfo( void ) {
 	}
 	objectiveSystem->SetStateBool( "noObjective", !objectiveCount );
 // RAVEN END
-
+	
 	objectiveSystem->StateChanged( gameLocal.time );
 }
 
@@ -9298,6 +9311,26 @@ void idPlayer::UpdateIntentDir ( void ) {
 
 /*
 ==============
+PERSONA ADDITION
+
+idPlayer::SummonPartyMember
+==============
+*/
+void idPlayer::SummonPartyMember(const char* classname)
+{
+	if (!classname || classname[0] == '\0')
+	{
+		gameLocal.Printf("Invalid classname for summon");
+		return;
+	}
+	
+	const char* cmd = va("spawn %s", classname);
+
+	cmdSystem->BufferCommandText(CMD_EXEC_NOW, cmd);
+}
+
+/*
+==============
 idPlayer::UpdateHud
 ==============
 */
@@ -9442,6 +9475,11 @@ void idPlayer::Think( void ) {
 			}
 		}
 	}
+	
+	// persona addition
+	//trace_t trace;
+
+	//gameLocal.TracePoint(GetEyePosition(), GetEyePosition() + viewAxis[0])
 
 	if ( !gameLocal.usercmds ) {
 		return;

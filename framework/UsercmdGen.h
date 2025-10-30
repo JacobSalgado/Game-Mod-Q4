@@ -72,6 +72,14 @@ const int IMPULSE_28			= 28;			// vote yes
 const int IMPULSE_29			= 29;			// vote no
 const int IMPULSE_40			= 40;			// repeast last radio chatter
 
+// PERSONA ADDITIONS
+const int IMPULSE_30 = 30; // summon marine medic
+const int IMPULSE_31 = 31; // summon marine rifle
+const int IMPULSE_32 = 32; // summon marine tech (recovers armor and can shoot)
+const int IMPULSE_33 = 33; // summon marine hyperblaster
+const int IMPULSE_34 = 34; // summon marine shotgun
+
+
 // RAVEN BEGIN
 // bdube: added flashlight
 const int IMPULSE_50			= 50;			// activate flashlight
