@@ -2080,6 +2080,9 @@ void idPlayer::Spawn( void ) {
 //RITUAL END
 
 	itemCosts = static_cast< const idDeclEntityDef * >( declManager->FindType( DECL_ENTITYDEF, "ItemCostConstants", false ) );
+
+	// persona addition
+	//cmdSystem->AddCommand(spawnMedicCmd.name, spawnMedicCmd.function, spawnMedicCmd.flags, spawnMedicCmd.desc);
 }
 
 /*
@@ -3565,6 +3568,49 @@ void idPlayer::GivePlayerExp()
 
 	gameLocal.Printf("Player Exp increased to %d\n", inventory.playerExp);
 }
+/*
+===============
+PERSONA ADDITION -
+
+idPlayer: SpawnMedic
+===============
+*/
+idList<idAI*> spawnedMedics; // persona addition
+void idPlayer::SpawnMedic()
+{
+	idDict args;
+	args.Set("classname", "char_marine_medic");
+
+	idVec3 spawn_origin = GetPhysics()->GetOrigin() + viewAxis[0] * 50.0f; // 100 units in front of the player
+	args.SetVector("origin", spawn_origin);
+
+	idEntity* ent = nullptr;
+	gameLocal.SpawnEntityDef(args, &ent);
+
+	if (ent)
+	{
+		spawnedMedics.Append(static_cast<idAI*>(ent));
+		ent->PostEventSec(&EV_Remove, 10.0f); // remove medic after 10 seconds
+		gameLocal.Printf("Medic spawned!");
+	}
+}
+/*
+===============
+PERSONA ADDITION -
+
+idPlayer: SpawnMedic Command
+===============
+*/
+void Cmd_SpawnMedic_f(const idCmdArgs& args)
+{
+	idPlayer* player = gameLocal.GetLocalPlayer();
+	if (player)
+	{
+		player->SpawnMedic();
+	}
+}
+static idCmdInfo spawnMedicCmd{ "spawn_medic", Cmd_SpawnMedic_f, 0, "Spawns a marine medic ally"};
+
 
 /*
 ===============

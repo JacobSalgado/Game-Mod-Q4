@@ -101,8 +101,11 @@ struct idLevelTriggerInfo {
 };
 
 // PERSONA ADDITION
-struct playerEquipment {
-	 
+struct idCmdInfo {
+	const char* name;
+	void (*function)(const idCmdArgs&);
+	int flags;
+	const char* desc;
 };
 
 /*
@@ -659,6 +662,7 @@ public:
 	void					UpdateHudPlayerLevel(idUserInterface* hud); // persona
 	void					UpdatePlayerLevel(); // persona
 	void					GivePlayerExp(); // persona
+	void					SpawnMedic(); // persona
  	void					UpdateHudAmmo( idUserInterface *hud );
  	void					ShowTip( const char *title, const char *tip, bool autoHide );
  	void					HideTip( void );
