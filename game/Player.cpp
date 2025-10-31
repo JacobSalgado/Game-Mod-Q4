@@ -2080,6 +2080,9 @@ void idPlayer::Spawn( void ) {
 //RITUAL END
 
 	itemCosts = static_cast< const idDeclEntityDef * >( declManager->FindType( DECL_ENTITYDEF, "ItemCostConstants", false ) );
+
+	// persona addition
+	//cmdSystem->AddCommand(spawnMedicCmd.name, spawnMedicCmd.function, spawnMedicCmd.flags, spawnMedicCmd.desc);
 }
 
 /*
@@ -3551,6 +3554,62 @@ void idPlayer::UpdatePlayerLevel()
 		inventory.GivePowerUp(gameLocal.GetLocalPlayer(), POWERUP_HASTE, 60000); // haste for 60 seconds
 	}
 }
+
+/*
+===============
+PERSONA ADDITION -
+
+idPlayer: GivePlayerExp
+===============
+*/
+void idPlayer::GivePlayerExp()
+{
+	inventory.playerExp += 200;
+
+	gameLocal.Printf("Player Exp increased to %d\n", inventory.playerExp);
+}
+/*
+===============
+PERSONA ADDITION -
+
+idPlayer: SpawnMedic
+===============
+*/
+idList<idAI*> spawnedMedics; // persona addition
+void idPlayer::SpawnMedic()
+{
+	idDict args;
+	args.Set("classname", "char_marine_medic");
+
+	idVec3 spawn_origin = GetPhysics()->GetOrigin() + viewAxis[0] * 50.0f; // 100 units in front of the player
+	args.SetVector("origin", spawn_origin);
+
+	idEntity* ent = nullptr;
+	gameLocal.SpawnEntityDef(args, &ent);
+
+	if (ent)
+	{
+		spawnedMedics.Append(static_cast<idAI*>(ent));
+		ent->PostEventSec(&EV_Remove, 10.0f); // remove medic after 10 seconds
+		gameLocal.Printf("Medic spawned!");
+	}
+}
+/*
+===============
+PERSONA ADDITION -
+
+idPlayer: SpawnMedic Command
+===============
+*/
+void Cmd_SpawnMedic_f(const idCmdArgs& args)
+{
+	idPlayer* player = gameLocal.GetLocalPlayer();
+	if (player)
+	{
+		player->SpawnMedic();
+	}
+}
+static idCmdInfo spawnMedicCmd{ "spawn_medic", Cmd_SpawnMedic_f, 0, "Spawns a marine medic ally"};
 
 
 /*
@@ -5329,7 +5388,7 @@ void idPlayer::UpdateObjectiveInfo( void ) {
 	}
 	objectiveSystem->SetStateBool( "noObjective", !objectiveCount );
 // RAVEN END
-
+	
 	objectiveSystem->StateChanged( gameLocal.time );
 }
 
@@ -9298,6 +9357,26 @@ void idPlayer::UpdateIntentDir ( void ) {
 
 /*
 ==============
+PERSONA ADDITION
+
+idPlayer::SummonPartyMember
+==============
+*/
+void idPlayer::SummonPartyMember(const char* classname)
+{
+	if (!classname || classname[0] == '\0')
+	{
+		gameLocal.Printf("Invalid classname for summon");
+		return;
+	}
+	
+	const char* cmd = va("spawn %s", classname);
+
+	cmdSystem->BufferCommandText(CMD_EXEC_NOW, cmd);
+}
+
+/*
+==============
 idPlayer::UpdateHud
 ==============
 */
@@ -9442,6 +9521,11 @@ void idPlayer::Think( void ) {
 			}
 		}
 	}
+	
+	// persona addition
+	//trace_t trace;
+
+	//gameLocal.TracePoint(GetEyePosition(), GetEyePosition() + viewAxis[0])
 
 	if ( !gameLocal.usercmds ) {
 		return;
